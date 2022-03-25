@@ -12,9 +12,9 @@ public class _01_IntroToStack {
     	Stack<Double> fsta = new Stack<Double>();
         // 2. Use a loop to push 100 random doubles between 0 and 100 to the Stack.
     	Random rand = new Random();
-    	rand.nextInt(100);
+    	double nd = rand.nextDouble()*100;
     	for (int i = 0; i < 100; i++) {
-			fsta.push(rand);
+			fsta.push(nd);
 			
 		}
         // 3. Ask the user to enter in two numbers between 0 and 100, inclusive. 
@@ -22,9 +22,19 @@ public class _01_IntroToStack {
     	String num2 = JOptionPane.showInputDialog("Enter another number between 0-100");
         // 4. Pop all the elements off of the Stack. Every time a double is popped that is
         //    between the two numbers entered by the user, print it to the screen.
+    	Double ln = Double.parseDouble(num1);
+    	Double hn = Double.parseDouble(num2);
+    	if (ln > hn) {
+			ln = Double.parseDouble(num2);
+			hn = Double.parseDouble(num1);
+		}
+    	
+    	System.out.println("Popping elements off stack...");
+    	System.out.println("Elements between "+ ln+" and "+ hn+ ":");
     	for (int i = 0; i < fsta.size(); i++) {
-			if (fsta.pop().equals(num1-num2)) {
-				
+    		double p = fsta.pop();
+			if (p >= ln && p <= hn) {
+				System.out.println(p);
 			}
 		}
 
