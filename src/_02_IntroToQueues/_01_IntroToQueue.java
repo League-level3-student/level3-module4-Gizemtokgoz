@@ -30,28 +30,47 @@ package _02_IntroToQueues;
  * Repeat until there are no more elements in the stack and queue
  */
 
+import java.util.ArrayDeque;
+import java.util.Random;
+import java.util.Stack;
+
 public class _01_IntroToQueue {
-    public static void main(String[] args) {
-        // 1. Create a Stack of Doubles using the Stack class
-        //    Note: you have to use the capitalized Double and not double
+	public static void main(String[] args) {
+		// 1. Create a Stack of Doubles using the Stack class
+		// Note: you have to use the capitalized Double and not double
+		Stack<Double> stadub = new Stack<Double>();
+		// 2. Use a loop to add 100 random doubles between 0 and 100 to the Stack
+		Random rand = new Random();
+		double nd = rand.nextDouble() * 100;
+		for (int i = 0; i < 100; i++) {
+			stadub.push(nd);
+		}
+		// 3. Create a Queue of Doubles using the ArrayDeque class
+		// Note: you have to use the capitalized Double and not double
+		ArrayDeque<Double> qudub = new ArrayDeque<Double>();
+		// 4. Pop off 5 elements from the Stack and add them to the Queue
+		for (int i = 0; i < 5; i++) {
+			double popdub = stadub.pop();
+			qudub.add(popdub);
+		}
+		// 5. Print and remove a random number of elements, from 1 to 5 elements,
+		// from the front of the Queue. Example:
+		// "removing 3 elements from Queue: 25 57 2"
+		double que;
+		Random rand2 = new Random();
+		double nd2 = rand.nextDouble() * 5;
+		for (int i = 0; i < nd2; i++) {
+			que = qudub.remove();
+		}
+		// 6. Pop off as many elements from the stack to fill the Queue with 5
+		// elements. If there aren't enough elements in the Stack to fill the
+		// queue, fill the queue as much as possible.
+		for (int i = 0; i < 5; i++) {
+				qudub.add(stadub.pop);
+			}
+		}
+		// 7. Loop until there are no more elements in either the Stack or Queue
+		// and all the elements are printed
 
-        // 2. Use a loop to add 100 random doubles between 0 and 100 to the Stack
-
-        // 3. Create a Queue of Doubles using the ArrayDeque class
-        //    Note: you have to use the capitalized Double and not double
-
-        // 4. Pop off 5 elements from the Stack and add them to the Queue 
-
-        // 5. Print and remove a random number of elements, from 1 to 5 elements,
-        //    from the front of the Queue. Example:
-        //    "removing 3 elements from Queue: 25 57 2"
-
-        // 6. Pop off as many elements from the stack to fill the Queue with 5
-        //    elements. If there aren't enough elements in the Stack to fill the 
-        //    queue, fill the queue as much as possible. 
-
-        // 7. Loop until there are no more elements in either the Stack or Queue
-        //    and all the elements are printed
-        
-    }
+	}
 }
