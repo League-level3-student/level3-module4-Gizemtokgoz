@@ -41,36 +41,47 @@ public class _01_IntroToQueue {
 		Stack<Double> stadub = new Stack<Double>();
 		// 2. Use a loop to add 100 random doubles between 0 and 100 to the Stack
 		Random rand = new Random();
-		double nd = rand.nextDouble() * 100;
 		for (int i = 0; i < 100; i++) {
+			double nd = rand.nextDouble() * 100;
 			stadub.push(nd);
 		}
 		// 3. Create a Queue of Doubles using the ArrayDeque class
 		// Note: you have to use the capitalized Double and not double
 		ArrayDeque<Double> qudub = new ArrayDeque<Double>();
-		// 4. Pop off 5 elements from the Stack and add them to the Queue
 		for (int i = 0; i < 5; i++) {
 			double popdub = stadub.pop();
 			qudub.add(popdub);
 		}
-		// 5. Print and remove a random number of elements, from 1 to 5 elements,
-		// from the front of the Queue. Example:
-		// "removing 3 elements from Queue: 25 57 2"
-		double que;
-		Random rand2 = new Random();
-		double nd2 = rand.nextDouble() * 5;
-		for (int i = 0; i < nd2; i++) {
-			que = qudub.remove();
-		}
-		// 6. Pop off as many elements from the stack to fill the Queue with 5
-		// elements. If there aren't enough elements in the Stack to fill the
-		// queue, fill the queue as much as possible.
-		for (int i = 0; i < 5; i++) {
-				qudub.add(stadub.pop);
+		while (stadub.size() > 0) {
+			// 4. Pop off 5 elements from the Stack and add them to the Queue
+			// 5. Print and remove a random number of elements, from 1 to 5 elements,
+			// from the front of the Queue. Example:
+			// "removing 3 elements from Queue: 25 57 2"
+			double que;
+			double nd2 = rand.nextInt(4) + 1;
+			for (int i = 0; i < nd2; i++) {
+				que = qudub.remove();
+				System.out.print(que + " ");
+			}
+			// 6. Pop off as many elements from the stack to fill the Queue with 5
+			// elements. If there aren't enough elements in the Stack to fill the
+			// queue, fill the queue as much as possible.
+			double emptyq;
+			while (qudub.size() != 5) {
+				if (!stadub.isEmpty()) {
+					emptyq = stadub.pop();
+					qudub.add(emptyq);
+				}
+
+				else {
+					break;
+				}
 			}
 		}
-		// 7. Loop until there are no more elements in either the Stack or Queue
-		// and all the elements are printed
-
+		System.out.println(stadub.size());
+		System.out.println(qudub.size());
 	}
+	// 7. Loop until there are no more elements in either the Stack or Queue
+	// and all the elements are printed
+
 }
