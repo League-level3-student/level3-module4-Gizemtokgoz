@@ -36,29 +36,31 @@ import java.util.Stack;
 public class _02_BaseballTickets {
 
 	public static int calculateWaitTime(ArrayDeque<Integer> ticketsQueue, int position) {
-		int totalTime = 0;
-		if (position == 0) {
-			while(ticketsQueue(position) != 0) {
-				totalTime += 1;
-				ticketsQueue
+		int minutes = 0;
+		int currentbuyer;
+		int currentposition = position;
+		boolean stillbuyingtickets = true;
+
+		while (stillbuyingtickets) {
+			currentbuyer = ticketsQueue.removeFirst();
+			currentbuyer -= 1;
+
+			if (currentbuyer != 0) {
+				ticketsQueue.add(currentbuyer);
+			}
+			
+			minutes += 1;
+			position -= 1;
+			if (currentposition < 0) {
+				if (currentbuyer == 0) {
+					stillbuyingtickets = false;
+				}
+			}
+			else {
+				position = ticketsQueue.size()-1;
 			}
 		}
-
-		if (position == 1) {
-
-		}
-
-		if (position == 2) {
-
-		}
-
-		if (position == 3) {
-
-		}
-
-		if (position == 4) {
-
-		}
-		return -1;
+		
+		return minutes;
 	}
 }
